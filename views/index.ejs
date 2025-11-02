@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<style>
+    .del{
+        color: white;
+        background-color: red;
+        padding: 7px;
+        border-radius: 12px;
+        margin:8px 0px;
+    }
+    .edit{
+        color: white;
+        background-color: rgb(51, 255, 0);
+        padding: 7px;
+        border-radius: 12px;
+        border: none;
+        margin: 8px 0px;
+    }
+</style>
+<body>
+   <h1>all chats</h1> 
+   <% for (let chat of allchats) {%>
+    <div class="chat">
+        <p >from: <i> <%= chat.from %></i></p>
+        <div class="msg">
+        <p><%= chat.msg %></p>
+        </div>
+        <p>to: <%= chat.to %></p>
+  
+        </p>
+        <form action="/chats/delete/<%= chat._id %>?_method=DELETE" method="post">
+            <button class="del">delete this chat</button>
+        </form>
+         <form action="/chats/<%= chat._id %>" method="get">
+            <button class="edit">edit msg</button>
+        </form>
+        <hr>
+        <p> time : <%= chat.created_at.toString().split(" ")[4] %></p>
+        <p>date: <%= chat.created_at.toString().split(" ").slice(0,4).join(" ") %></p>
+    </div>
+    <br><br>
+   <%} %>
+
+   <form action="/chats/new" method="get">
+    <button>new chat</button>
+   </form>
+</body>
+</html>

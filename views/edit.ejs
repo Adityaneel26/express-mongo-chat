@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%= console.log(val);%></h1>
+    <h1>Edit your message</h1>
+    <p>form:<%=val.from%></p>
+    <p>to:<%= val.to  %></p>
+    <form action="/chats/edit/<%= val._id %>?_method=PATCH" method="post">
+        <h2>edit your message</h2>
+        <textarea name="msg" id=""><%= val.msg %></textarea>
+        <button>click to edit</button>
+    </form>
+</body>
+</html>
